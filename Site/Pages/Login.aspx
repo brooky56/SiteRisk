@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Site.Pages.Login" MasterPageFile="~/Pages/Site.Master" %>
 
-<asp:Content ID="LoginPage" ContentPlaceHolderID="bodyContent" runat="server">
+<asp:Content ID="LoginPage" ContentPlaceHolderID="loginPage" runat="server">
     <div class="container">
         <div class="row">
             <div class="col-md-6 mx-auto">
@@ -16,7 +16,7 @@
                         <div class="row">
                             <div class="col">
                                 <center>
-                           <h3>Member Login</h3>
+                           <h3>Авторизация</h3>
                         </center>
                             </div>
                         </div>
@@ -42,7 +42,6 @@
                         </div>
                     </div>
                 </div>
-                <a href="Default.aspx"><< Back to Home</a><br>
                 <br>
             </div>
         </div>

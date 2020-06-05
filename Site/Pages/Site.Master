@@ -4,7 +4,22 @@
 
 <html>
 <head runat="server">
-    <title></title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="../Content/style.css" />
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+
+    <script src="../Scripts/scripts.js"></script>
+    <script src="../Scripts/vendor/jquery-1.9.1.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/popper.min.js"></script>
+
+
+
+
+    <title>Анализ Рисков</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -14,8 +29,7 @@
             <div id="header">
                 <div class="title">Aвтоматизации анализа рисков ИБ</div>
             </div>
-            <asp:ContentPlaceHolder ID="bodyContent" runat="server">
-            </asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="loginPage" runat="server" />
         </div>
     </form>
 </body>
