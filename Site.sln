@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Site", "Site\Site.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "..\..\..\Downloads\AnalizRiskov-master\Domain\Domain.csproj", "{AC8F68A4-5575-4032-8A2B-D87DD1060D03}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataContext", "DataContext\DataContext.csproj", "{F3AB2E14-BA26-4146-902A-816A937B193A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{AC8F68A4-5575-4032-8A2B-D87DD1060D03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC8F68A4-5575-4032-8A2B-D87DD1060D03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC8F68A4-5575-4032-8A2B-D87DD1060D03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3AB2E14-BA26-4146-902A-816A937B193A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3AB2E14-BA26-4146-902A-816A937B193A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3AB2E14-BA26-4146-902A-816A937B193A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3AB2E14-BA26-4146-902A-816A937B193A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

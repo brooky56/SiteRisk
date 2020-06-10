@@ -13,5 +13,10 @@ namespace Site.Pages
         {
 
         }
+
+        protected void login_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Projects.aspx");
+        }
     }
 }

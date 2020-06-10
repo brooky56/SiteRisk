@@ -1,15 +1,41 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ProjectSettings.aspx.cs" Inherits="Site.Pages.StaticContent.ProjectSettings" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ProjectSettings.aspx.cs" Inherits="Site.Pages.StaticContent.ProjectSettings" MasterPageFile="~/Pages/Site.Master" %>
 
-<!DOCTYPE html>
+<asp:Content ID="ProjectSettings" ContentPlaceHolderID="ProjectSettingsPage" runat="server">
+    <div id="wrapper">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="../Projects.aspx">Главная</a>
+                </li>
+                <li>
+                    <a href="Tables/HazardsTablePage.aspx">Таблица Угроз</a>
+                </li>
+                <li>
+                    <a href="Tables/VulnerabilitieTablePage.aspx">Таблица Уязвимостей</a>
+                </li>
+                <li>
+                    <a href="Tables/HazardToValnerabilitiesTablePage.aspx">Таблица Угроз и Уязвимостей</a>
+                </li>
+                <li>
+                    <a href="Tables/HazardsToAssetsTablePage.aspx">Таблица Угроз и Активов</a>
+                </li>
+                <li>
+                    <a href="Tables/AssetTypesTablePage.aspx">Таблица Активов</a>
+                </li>
+            </ul>
         </div>
-    </form>
-</body>
-</html>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- Menu Toggle Script -->
+</asp:Content>

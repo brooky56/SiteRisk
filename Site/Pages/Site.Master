@@ -9,14 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="../Content/style.css" />
+    <link rel="stylesheet" href="../Content/stylegrid.css" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
 
     <script src="../Scripts/scripts.js"></script>
     <script src="../Scripts/vendor/jquery-1.9.1.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/popper.min.js"></script>
-
-
 
 
     <title>Анализ Рисков</title>
@@ -30,6 +29,21 @@
                 <div class="title">Aвтоматизации анализа рисков ИБ</div>
             </div>
             <asp:ContentPlaceHolder ID="loginPage" runat="server" />
+            <asp:ContentPlaceHolder ID="ProjectsPage" runat="server" />
+            <asp:ContentPlaceHolder ID="MyProjectsPage" runat="server" />
+            <asp:ContentPlaceHolder ID="NewProjectsPage" runat="server" />
+            <asp:ContentPlaceHolder ID="ProjectSettingsPage" runat="server" />
+            <asp:ContentPlaceHolder ID="AssetTypesPage" runat="server" />
+            <asp:ContentPlaceHolder ID="VulTablePage" runat="server" />
+            <asp:ContentPlaceHolder ID="HazardsToAssetsPage" runat="server" />
+            <asp:ContentPlaceHolder ID="HazardsToValnerabilitiesPage" runat="server" />
+            <asp:ContentPlaceHolder ID="ValnerabilitiesPage" runat="server" />
+            <asp:ContentPlaceHolder ID="Stage2Page" runat="server" />
+            <asp:ContentPlaceHolder ID="Stage3Page" runat="server" />
+            <asp:ContentPlaceHolder ID="Stage4Page" runat="server" />
+            <asp:ContentPlaceHolder ID="Stage5Page" runat="server" />
+            <asp:ContentPlaceHolder ID="Stage6Page" runat="server" />
+            <asp:ContentPlaceHolder ID="Stage7Page" runat="server" />
         </div>
     </form>
 </body>
