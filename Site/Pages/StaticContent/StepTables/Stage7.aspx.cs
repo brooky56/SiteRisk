@@ -115,16 +115,16 @@ namespace Site.Pages.StaticContent.StepTables
 
                 while (rdr.Read())
                 {
-                    DataRow dr = dataTable.NewRow();
+                    DataRow dr = dataTable2.NewRow();
                     dr["id"] = rdr.GetValue(rdr.GetOrdinal("id"));
                     dr["Name"] = rdr.GetValue(rdr.GetOrdinal("Name"));
                     dr["Effect"] = rdr.GetValue(rdr.GetOrdinal("Effect"));
                     dr["assetType"] = rdr.GetValue(rdr.GetOrdinal("assetType"));
 
-                    dataTable.Rows.Add(dr);
+                    dataTable2.Rows.Add(dr);
                 }
 
-                DataView dv = new DataView(dataTable);
+                DataView dv = new DataView(dataTable2);
                 list1.DataSource = dv;
                 list1.DataTextField = "Name";
                 list1.DataValueField = "id";
@@ -159,14 +159,14 @@ namespace Site.Pages.StaticContent.StepTables
 
                 while (rdr.Read())
                 {
-                    DataRow dr = dataTable2.NewRow();
+                    DataRow dr = dataTable.NewRow();
                     dr["assetId"] = rdr.GetValue(rdr.GetOrdinal("id"));
                     dr["assetName"] = rdr.GetValue(rdr.GetOrdinal("Name"));
 
-                    dataTable2.Rows.Add(dr);
+                    dataTable.Rows.Add(dr);
                 }
 
-                DataView dv = new DataView(dataTable2);
+                DataView dv = new DataView(dataTable);
                 objectList.DataSource = dv;
                 objectList.DataTextField = "assetName";
                 objectList.DataValueField = "assetId";
