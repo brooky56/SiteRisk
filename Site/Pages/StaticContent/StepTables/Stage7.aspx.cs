@@ -84,6 +84,11 @@ namespace Site.Pages.StaticContent.StepTables
                 list3.DataValueField = "id";
                 list3.DataBind();
 
+                list4.DataSource = dv;
+                list4.DataTextField = "Name";
+                list4.DataValueField = "id";
+                list4.DataBind();
+
 
 
             }
@@ -206,7 +211,7 @@ namespace Site.Pages.StaticContent.StepTables
                 cmd.Prepare();
 
 
-                cmd.Parameters.AddWithValue("@Name", objectList.SelectedItem.Text);
+                cmd.Parameters.AddWithValue("@assetType", objectList.SelectedItem.Text);
                 cmd.Parameters.AddWithValue("@level0", list0.SelectedItem.Text);
                 cmd.Parameters.AddWithValue("@level1", list1.SelectedItem.Text);
                 cmd.Parameters.AddWithValue("@level2", list2.SelectedItem.Text);

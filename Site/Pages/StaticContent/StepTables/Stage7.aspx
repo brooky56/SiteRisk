@@ -118,7 +118,7 @@
                             <div class="form-group">
                                  <asp:DropDownList CssClass="form-control" ID="list3" runat="server" />
                             </div>
-                            <label>Последствия 4 уровняs</label>
+                            <label>Последствия 4 уровня</label>
                             <div class="form-group">
                                  <asp:DropDownList CssClass="form-control" ID="list4" runat="server" />
                             </div>
