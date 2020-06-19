@@ -14,9 +14,20 @@ namespace Site.Pages.StaticContent.StepTables
         private static DataTable dataTable;
         private static DataTable dataTable2;
         private static DataTable dataTable3;
+        private static DataTable dataTable4;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            dataTable4 = new DataTable();
+            dataTable4.Columns.Add("id");
+            dataTable4.Columns.Add("assetType");
+            dataTable4.Columns.Add("level0");
+            dataTable4.Columns.Add("level1");
+            dataTable4.Columns.Add("level2");
+            dataTable4.Columns.Add("level3");
+            dataTable4.Columns.Add("level4");
+            dataTable4.Columns.Add("projectId");
+
             dataTable = new DataTable();
             dataTable.Columns.Add("assetId");
             dataTable.Columns.Add("assetName");
@@ -34,11 +45,87 @@ namespace Site.Pages.StaticContent.StepTables
             dataTable3.Columns.Add("Price");
             dataTable3.Columns.Add("AssetType");
 
+            PageDataCascadeEventBind();
             PageDataBindWorkEffect();
             PageDataBindEffect();
             PageDataBindAsset();
         }
 
+        protected void PageDataCascadeEventBind()
+        {
+            MySqlConnection con = new MySqlConnection("server=localhost;port=3306;uid=root;pwd=admin;database=siterisk;");
+            try
+            {
+                string selectquery = $"SELECT * FROM siterisk.cascadeevent where projectId={Request.QueryString["projectId"]}";
+                MySqlCommand cmd = new MySqlCommand(selectquery)
+                {
+                    Connection = con,
+                    CommandType = CommandType.Text
+                };
+                con.Open();
+                cmd.ExecuteNonQuery();
+
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    DataRow dr = dataTable4.NewRow();
+                    dr["id"] = rdr.GetValue(rdr.GetOrdinal("id"));
+                    dr["assetType"] = rdr.GetValue(rdr.GetOrdinal("assetType"));
+                    dr["level0"] = rdr.GetValue(rdr.GetOrdinal("level0"));
+                    dr["level1"] = rdr.GetValue(rdr.GetOrdinal("level1"));
+                    dr["level2"] = rdr.GetValue(rdr.GetOrdinal("level2"));
+                    dr["level3"] = rdr.GetValue(rdr.GetOrdinal("level3"));
+                    dr["level4"] = rdr.GetValue(rdr.GetOrdinal("level4"));
+                    dr["projectId"] = rdr.GetValue(rdr.GetOrdinal("projectId"));
+
+                    dataTable4.Rows.Add(dr);
+                }
+
+                DataView dv = new DataView(dataTable4);
+                cascade.DataSource = dv;
+                cascade.DataBind();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        protected void UpdateStageProject()
+        {
+            MySqlConnection con = new MySqlConnection("server=localhost;port=3306;uid=root;pwd=admin;database=siterisk;");
+            try
+            {
+                string insertQuery = $"update siterisk.projects set status=@status where id=@id";
+
+
+                MySqlCommand cmd = new MySqlCommand(insertQuery)
+                {
+                    Connection = con,
+                    CommandType = CommandType.Text
+                };
+
+                con.Open();
+                cmd.Parameters.AddWithValue("@status", "Stage7");
+                cmd.Parameters.AddWithValue("@id", Request.QueryString["projectId"]);
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
 
         protected void PageDataBindWorkEffect()
         {
@@ -229,9 +316,22 @@ namespace Site.Pages.StaticContent.StepTables
             {
                 con.Close();
             }
+            UpdateStageProject();
+
+            Response.Redirect($"Stage7.aspx?projectId={Request.QueryString["projectId"]}");
         }
 
         protected void continueProject_Click(object sender, EventArgs e)
+        {
+            Response.Redirect($"Stage8.aspx?projectId={Request.QueryString["projectId"]}");
+        }
+
+        protected void cascade_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+
+        }
+
+        protected void cascade_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
         }

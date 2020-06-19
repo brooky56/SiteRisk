@@ -98,6 +98,28 @@
                             <h5>
                                 <label>Активы</label>
                             </h5>
+
+                            <asp:GridView ID="assetID" runat="server" AutoGenerateColumns="false"
+                                AllowPaging="true" PageSize="5" OnPageIndexChanging="assetID_PageIndexChanging"
+                                CssClass="mydatagrid"
+                                OnRowCommand="assetID_RowCommand"
+                                AlternatingRowStyle-CssClass="alt"
+                                PagerStyle-CssClass="pgr">
+
+                                <Columns>
+                                    <asp:BoundField DataField="id" HeaderText="Id" />
+                                    <asp:BoundField DataField="Name" HeaderText="Наименование ИА " />
+                                    <asp:BoundField DataField="Description" HeaderText="Описание ИА" />
+                                    <asp:BoundField DataField="assetType" HeaderText="Тип ИА" />
+                                    <asp:BoundField DataField="Price" HeaderText="Стоимость, тыс. руб." />
+                                    <asp:BoundField DataField="Time" HeaderText="Время восстановления при отказе, час." />
+                                    <asp:BoundField DataField="MainAmount" HeaderText="Кол-во экз., в рабочем состоянии (основное)" />
+                                    <asp:BoundField DataField="ReserveAmount" HeaderText="Кол-во экз., в рабочем состоянии (резерв)" />
+                                    <asp:BoundField DataField="ZipAmount" HeaderText="Кол-во экз., находящихся в ЗИП" />
+                                    <asp:BoundField DataField="projectId" HeaderText="Номер проекта" />
+                                </Columns>
+                            </asp:GridView>
+
                             <label>Наименование ИА</label>
                             <div class="form-group">
                                 <asp:TextBox CssClass="form-control" ID="IAName" runat="server" />

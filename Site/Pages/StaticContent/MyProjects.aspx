@@ -40,7 +40,7 @@
                                 <asp:ButtonField ButtonType="Button" CommandName="Download" HeaderText="Загрузить" Text="Загрузить" ControlStyle-CssClass="btn btn-dark" />
                                 <asp:ButtonField ButtonType="Button" CommandName="UpdateProject" HeaderText="Редактировать" Text="Редактировать" ControlStyle-CssClass="btn btn-dark" />
                                 <asp:ButtonField ButtonType="Button" CommandName="Copy" HeaderText="Дублировать" Text="Дублировать" ControlStyle-CssClass="btn btn-dark" />
-                                <asp:ButtonField ButtonType="Button" CommandName="Delete" HeaderText="Удалить" Text="Удалить" ControlStyle-CssClass="btn btn-danger" />
+                                <asp:ButtonField ButtonType="Button" CommandName="DeleteProject" HeaderText="Удалить" Text="Удалить" ControlStyle-CssClass="btn btn-danger" />
                             </Columns>
                         </asp:GridView>
                     </div>

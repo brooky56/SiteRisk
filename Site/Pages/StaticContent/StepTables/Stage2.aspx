@@ -119,7 +119,7 @@
                                 <asp:CheckBoxList ID="RadioButtonList"
                                     OnSelectedIndexChanged="RadioButtonList_SelectedIndexChanged"
                                     AutoPostBack="false"
-                                    runat="server" CssClass="custom-checkbox" />
+                                    runat="server" CssClass="custom-checkbox" Visible="false"/>
 
                                 <asp:Button ID="saveProject" Text="Сохранить" runat="server" OnClick="saveProject_Click" CssClass="btn btn-success" />
 

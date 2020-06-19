@@ -15,6 +15,15 @@ namespace Site.Pages.StaticContent.StepTables
     {
 
         /// <summary>
+        /// effect control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView effect;
+
+        /// <summary>
         /// IAName control.
         /// </summary>
         /// <remarks>

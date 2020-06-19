@@ -44,6 +44,9 @@
             <asp:ContentPlaceHolder ID="Stage5Page" runat="server" />
             <asp:ContentPlaceHolder ID="Stage6Page" runat="server" />
             <asp:ContentPlaceHolder ID="Stage7Page" runat="server" />
+            <asp:ContentPlaceHolder ID="Stage8Page" runat="server" />
+            <asp:ContentPlaceHolder ID="Stage9Page" runat="server" />
+            <asp:ContentPlaceHolder ID="Stage10Page" runat="server" />
         </div>
     </form>
 </body>

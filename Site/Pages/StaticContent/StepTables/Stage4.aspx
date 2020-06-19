@@ -66,6 +66,7 @@
             padding: 5px;
         }
     </style>
+
     <div id="wrapper">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
@@ -100,6 +101,22 @@
                             </h5>
                             <div class="col">
                                 <div class="row">
+                                    <asp:GridView ID="assetThreat" runat="server" AutoGenerateColumns="false"
+                                        AllowPaging="true" PageSize="5"
+                                        CssClass="mydatagrid"
+                                        AlternatingRowStyle-CssClass="alt"
+                                        PagerStyle-CssClass="pgr">
+
+                                        <columns>
+                                    <asp:BoundField DataField="id" HeaderText="Id" />
+                                    <asp:BoundField DataField="threatName" HeaderText="Наименование угрозы" />
+                                    <asp:BoundField DataField="threatShortName" HeaderText="Условное обозначение угрозы" />
+                                    <asp:BoundField DataField="assetName" HeaderText="Тип актива" />
+                                    <asp:BoundField DataField="projectId" HeaderText="Номер проекта" />
+
+                                </columns>
+                                    </asp:GridView>
+
                                     <div class="col m-2">
                                         <label>Угрозы</label>
                                         <asp:DropDownList ID="threatList" runat="server" CssClass="custom-select" />
@@ -109,7 +126,7 @@
                                         <asp:DropDownList ID="assetList" runat="server" CssClass="custom-select" />
                                     </div>
                                     <div class="col m-2">
-                                        <label></label>
+                                        <label>Добавить</label>
                                         <asp:Button ID="AddTALink" Text="Добавить связь" runat="server" OnClick="AddTALink_Click" CssClass="btn btn-info" />
                                     </div>
                                 </div>

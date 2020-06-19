@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Stage7.aspx.cs" Inherits="Site.Pages.StaticContent.StepTables.Stage7" MasterPageFile="~/Pages/Site.Master"%>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Stage7.aspx.cs" Inherits="Site.Pages.StaticContent.StepTables.Stage7" MasterPageFile="~/Pages/Site.Master" %>
 
 <asp:Content ID="Stage7Table" ContentPlaceHolderID="Stage7Page" runat="server">
     <style>
@@ -98,17 +98,37 @@
                             <h5>
                                 <label>Сценарии каскадных событий</label>
                             </h5>
+
+                            <asp:GridView ID="cascade" runat="server" AutoGenerateColumns="false"
+                                AllowPaging="true" PageSize="5" OnPageIndexChanging="cascade_PageIndexChanging"
+                                CssClass="mydatagrid"
+                                OnRowCommand="cascade_RowCommand"
+                                AlternatingRowStyle-CssClass="alt"
+                                PagerStyle-CssClass="pgr">
+
+                                <Columns>
+                                    <asp:BoundField DataField="id" HeaderText="Id" />
+                                    <asp:BoundField DataField="assetType" HeaderText="Объект воздействия" />
+                                    <asp:BoundField DataField="level0" HeaderText="Последствие 0 уровня" />
+                                    <asp:BoundField DataField="level1" HeaderText="Последствие 1 уровня" />
+                                    <asp:BoundField DataField="level2" HeaderText="Последствие 2 уровня" />
+                                    <asp:BoundField DataField="level3" HeaderText="Последствие 3 уровня" />
+                                    <asp:BoundField DataField="level4" HeaderText="Последствие 4 уровня" />
+                                    <asp:BoundField DataField="projectId" HeaderText="Номер проекта" />
+                                </Columns>
+                            </asp:GridView>
+
                             <label>Объект воздействия</label>
                             <div class="form-group">
                                 <asp:DropDownList CssClass="form-control" ID="objectList" runat="server" />
                             </div>
                             <label>Последствие 0 уровня</label>
                             <div class="form-group">
-                                 <asp:DropDownList CssClass="form-control" ID="list0" runat="server" />
+                                <asp:DropDownList CssClass="form-control" ID="list0" runat="server" />
                             </div>
                             <label>Последствие 1 уровня</label>
                             <div class="form-group">
-                                 <asp:DropDownList CssClass="form-control" ID="list1" runat="server" />
+                                <asp:DropDownList CssClass="form-control" ID="list1" runat="server" />
                             </div>
                             <label>Последствия 2 уровня</label>
                             <div class="form-group">
@@ -116,11 +136,11 @@
                             </div>
                             <label>Последствия 3 уровня</label>
                             <div class="form-group">
-                                 <asp:DropDownList CssClass="form-control" ID="list3" runat="server" />
+                                <asp:DropDownList CssClass="form-control" ID="list3" runat="server" />
                             </div>
                             <label>Последствия 4 уровня</label>
                             <div class="form-group">
-                                 <asp:DropDownList CssClass="form-control" ID="list4" runat="server" />
+                                <asp:DropDownList CssClass="form-control" ID="list4" runat="server" />
                             </div>
                             <div class="form-group">
                                 <asp:Button ID="saveProject" Text="Сохранить" runat="server" OnClick="saveProject_Click" CssClass="btn btn-success" />

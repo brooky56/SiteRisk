@@ -76,18 +76,47 @@ namespace Site.Pages.StaticContent
             int index = Convert.ToInt32(e.CommandArgument);
             if (e.CommandName == "UpdateProject")
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Update is successfull')", true);
+
+                // ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Update is successfull')", true);
+                Response.Redirect($"StepTables/{MyProjectsGrid.Rows[index].Cells[3].Text}.aspx?projectId={MyProjectsGrid.Rows[index].Cells[0].Text}");
             }
 
             if (e.CommandName == "Download")
             {
                 String cellText = MyProjectsGrid.Rows[index].Cells[3].Text;
-                if (cellText != "Done")
+                if (cellText != "Завершено")
                 {
                     MyProjectsGrid.Rows[index].Cells[4].Enabled = false;
                 }
 
                 ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Begin downloading...')", true);
+                Response.Redirect($"StepTables/Stage10.aspx?projectId={MyProjectsGrid.Rows[index].Cells[0].Text}");
+            }
+            if (e.CommandName == "DeleteProject")
+            {
+                MySqlConnection con = new MySqlConnection("server=localhost;port=3306;uid=root;pwd=admin;database=siterisk;");
+                try
+                {
+                    string selectquery = "delete from siterisk.projects where id=@id";
+                    MySqlCommand cmd = new MySqlCommand(selectquery)
+                    {
+                        Connection = con,
+                        CommandType = CommandType.Text
+                    };
+                    con.Open();
+                    cmd.Parameters.AddWithValue("@id", MyProjectsGrid.Rows[index].Cells[0].Text);
+                    cmd.ExecuteNonQuery();
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                finally
+                {
+                    con.Close();
+                }
+                Response.Redirect("MyProjects.aspx");
             }
         }
     }

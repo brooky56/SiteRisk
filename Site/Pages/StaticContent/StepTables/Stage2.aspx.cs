@@ -30,6 +30,35 @@ namespace Site.Pages.StaticContent.StepTables
 
         }
 
+        protected void UpdateStageProject()
+        {
+            MySqlConnection con = new MySqlConnection("server=localhost;port=3306;uid=root;pwd=admin;database=siterisk;");
+            try
+            {
+                string insertQuery = $"update siterisk.projects set status=@status where id=@id";
+
+
+                MySqlCommand cmd = new MySqlCommand(insertQuery)
+                {
+                    Connection = con,
+                    CommandType = CommandType.Text
+                };
+
+                con.Open();
+                cmd.Parameters.AddWithValue("@status", "Stage2");
+                cmd.Parameters.AddWithValue("@id", Request.QueryString["projectId"]);
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
         protected void PageDataBind()
         {
             MySqlConnection con = new MySqlConnection("server=localhost;port=3306;uid=root;pwd=admin;database=siterisk;");
@@ -87,6 +116,7 @@ namespace Site.Pages.StaticContent.StepTables
 
         protected void continueProject_Click(object sender, EventArgs e)
         {
+            UpdateStageProject();
             Response.Redirect($"Stage3.aspx?projectId={Request.QueryString["projectId"]}");
         }
 

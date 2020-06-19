@@ -98,6 +98,23 @@
                             <h5>
                                 <label>Последствия реализации угроз ИБ</label>
                             </h5>
+
+                            <asp:GridView ID="effect" runat="server" AutoGenerateColumns="false"
+                                AllowPaging="true" PageSize="5" OnPageIndexChanging="effect_PageIndexChanging"
+                                CssClass="mydatagrid"
+                                OnRowCommand="effect_RowCommand"
+                                AlternatingRowStyle-CssClass="alt"
+                                PagerStyle-CssClass="pgr">
+
+                                <Columns>
+                                    <asp:BoundField DataField="id" HeaderText="Id" />
+                                    <asp:BoundField DataField="Name" HeaderText="Условное обозначение" />
+                                    <asp:BoundField DataField="Effect" HeaderText="Последствие" />
+                                    <asp:BoundField DataField="assetType" HeaderText="Тип ИА" />
+                                    <asp:BoundField DataField="projectId" HeaderText="Номер проекта" />
+                                </Columns>
+                            </asp:GridView>
+
                             <label>Условное обозначение</label>
                             <div class="form-group">
                                 <asp:TextBox CssClass="form-control" ID="IAName" runat="server" />
