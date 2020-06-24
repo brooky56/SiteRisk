@@ -510,9 +510,79 @@ namespace Site.Pages.StaticContent.StepTables
                 con.Close();
             }
         }
+        protected void ChangeTableColumns() 
+        {
+            assets.Columns["id"].ColumnName = "№";
+            assets.Columns["Name"].ColumnName = "Наименование ИА ";
+            assets.Columns["Description"].ColumnName = "Описание ИА";
+            assets.Columns["assetType"].ColumnName = "Группа ИА";
+            assets.Columns["Price"].ColumnName = "Стоимость, тыс. руб.";
+            assets.Columns["Time"].ColumnName = "Время восстановления при отказе, час.";
+            assets.Columns["MainAmount"].ColumnName = "Кол-во экз., в рабочем состоянии Осн.";
+            assets.Columns["ReserveAmount"].ColumnName = "Кол-во экз., в рабочем состоянии Резерв.";
+            assets.Columns["ZipAmount"].ColumnName = "Кол-во экз., находящихся в ЗИП";
+            assets.Columns["projectId"].ColumnName = "Проект";
+
+            actualThreats.Columns["id"].ColumnName = "№";
+            actualThreats.Columns["Name"].ColumnName = "Условное обозначение";
+            actualThreats.Columns["FullName"].ColumnName = "Наименование угрозы";
+            actualThreats.Columns["Description"].ColumnName = "Описание угрозы";
+            actualThreats.Columns["FSTEKId"].ColumnName = "ID угрозы (из БДУ ФСТЭК)";
+            actualThreats.Columns["projectId"].ColumnName = "Проект";
+
+            vals.Columns["id"].ColumnName = "№";
+            vals.Columns["Name"].ColumnName = "Условное обозначение";
+            vals.Columns["FullName"].ColumnName = "Наименование уязвимого звена";
+
+            threatEffectIB.Columns["id"].ColumnName = "№";
+            threatEffectIB.Columns["Name"].ColumnName = "Условное обозначение";
+            threatEffectIB.Columns["Effect"].ColumnName = "Последствие";
+            threatEffectIB.Columns["assetType"].ColumnName = "Тип Актива";
+            threatEffectIB.Columns["projectId"].ColumnName = "Проект";
+
+            workEffect.Columns["id"].ColumnName = "№";
+            workEffect.Columns["Name"].ColumnName = "Условное обозначение";
+            workEffect.Columns["Effect"].ColumnName = "Последствие";
+            workEffect.Columns["Price"].ColumnName = "Ущерб млн.рублей";
+            workEffect.Columns["AssetType"].ColumnName = "Объект воздействия";
+            workEffect.Columns["level"].ColumnName = "Уровень";
+            workEffect.Columns["projectId"].ColumnName = "Проект";
+
+            protectMeasure.Columns["id"].ColumnName = "№";
+            protectMeasure.Columns["Name"].ColumnName = "Обозначение защитной меры";
+            protectMeasure.Columns["Description"].ColumnName = "Описание защитной меры";
+            protectMeasure.Columns["Vulnerability"].ColumnName = "Устраняемая уязвимость";
+            protectMeasure.Columns["projectId"].ColumnName = "Проект";
+
+            threatEvaluationTable.Columns["id"].ColumnName = "№";
+            threatEvaluationTable.Columns["Name"].ColumnName = "Наименование риска ИБ";
+            threatEvaluationTable.Columns["Threat"].ColumnName = "Угроза, вызывающая нарушение ИБ";
+            threatEvaluationTable.Columns["Effect"].ColumnName = "Последствия нарушения ИБ";
+            threatEvaluationTable.Columns["Probability"].ColumnName = "Вероятность реализации угрозы";
+            threatEvaluationTable.Columns["projectId"].ColumnName = "Проект";
+
+            cascadeProb.Columns["id"].ColumnName = "№";
+            cascadeProb.Columns["level0"].ColumnName = "Последствия 0 уровня (событие ИБ)";
+            cascadeProb.Columns["level1"].ColumnName = "Последствия 1 уровня(последствия для АСУ ТП)";
+            cascadeProb.Columns["level2"].ColumnName = "Последствия 2 уровня(последствия для АСУ ТП)";
+            cascadeProb.Columns["level3"].ColumnName = "Последствия 3 уровня  (последствия для технологического процесса)";
+            cascadeProb.Columns["projectId"].ColumnName = "Проект";
+
+            finalResult.Columns["id"].ColumnName = "№";
+            finalResult.Columns["Name"].ColumnName = "Наименование риска ИБ";
+            finalResult.Columns["threatName"].ColumnName = "Угроза, вызываю-щая нарушение ";
+            finalResult.Columns["vals"].ColumnName = "Уязвимость, используемая для реализации угрозы";
+            finalResult.Columns["protects"].ColumnName = "Защитные меры, нейтрализую-щие угрозу или последствия";
+            finalResult.Columns["effects"].ColumnName = "Последствия нарушения ИБ";
+            finalResult.Columns["damagePrice"].ColumnName = "Ущерб от реализации угрозы, млн. руб.ы";
+            finalResult.Columns["prob"].ColumnName = "Вероятность реализации угрозы";
+            finalResult.Columns["evaluaterisk"].ColumnName = "Оценка риска ИБ, тыс. руб. в год";
+            finalResult.Columns["projectId"].ColumnName = "Проект";
+        }
         protected void download_Click(object sender, EventArgs e)
         {
             UpdateStageProject();
+            ChangeTableColumns();
             using (var workbook = new XLWorkbook())
             {
                 var sh1 = workbook.Worksheets.Add(assets, "Активы");
