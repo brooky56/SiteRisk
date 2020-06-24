@@ -301,11 +301,51 @@ namespace Site.Pages.StaticContent.StepTables
             Response.Redirect($"Stage10.aspx?projectId={Request.QueryString["projectId"]}");
         }
 
+        protected int GetEvaluationRisk()
+        {
+            int price = 0;
+
+            MySqlConnection con = new MySqlConnection("server=localhost;port=3306;uid=root;pwd=admin;database=siterisk;");
+            try
+            {
+                string selectquery = $"SELECT DamagePrice FROM siterisk.accountinfo where projectId = {Request.QueryString["projectId"]}";
+                MySqlCommand cmd = new MySqlCommand(selectquery)
+                {
+                    Connection = con,
+                    CommandType = CommandType.Text
+                };
+                con.Open();
+                cmd.ExecuteNonQuery();
+
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                
+                while (rdr.Read())
+                {
+                    price = Convert.ToInt32(rdr.GetValue(rdr.GetOrdinal("DamagePrice")));
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return price;
+        }
+
         protected void FillFinalTable()
         {
             DataTable threateffect = GetThreatEffectTable();
             string threat = "";
             string protectMeasure = "";
+
+            int evaluationRisk = GetEvaluationRisk();
             foreach (DataRow dr in threateffect.Rows)
             {
                 double a = 0.0;
@@ -318,8 +358,8 @@ namespace Site.Pages.StaticContent.StepTables
                     b = Convert.ToDouble(dataRowTreat["damagePrice"]);
                 }
 
-                InsertToResultTable(dr["Effect"].ToString(),threat, ProtectMeasureData(),
-                        ProtectMeasureData(), dr["Name"].ToString(), a, b, 0);
+                InsertToResultTable(dr["Effect"].ToString(), threat, ProtectMeasureData(),
+                        ProtectMeasureData(), dr["Name"].ToString(), a, b, evaluationRisk);
             }
         }
 
