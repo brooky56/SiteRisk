@@ -304,14 +304,22 @@ namespace Site.Pages.StaticContent.StepTables
         protected void FillFinalTable()
         {
             DataTable threateffect = GetThreatEffectTable();
-
+            string threat = "";
+            string protectMeasure = "";
             foreach (DataRow dr in threateffect.Rows)
             {
+                double a = 0.0;
+                double b = 0.0;
                 foreach (DataRow dataRowTreat in dataTable.Rows)
                 {
-                    InsertToResultTable(dr["Effect"].ToString(), dataRowTreat["threatIB"].ToString(), ProtectMeasureData(),
-                        ProtectMeasureData(), dr["Name"].ToString(), Convert.ToDouble(dataRowTreat["damagePrice"]), Convert.ToDouble(dataRowTreat["damagePrice"]), 0);
+                    threat += dataRowTreat["threatIB"].ToString();
+                    protectMeasure += ProtectMeasureData();
+                    a = Convert.ToDouble(dataRowTreat["damagePrice"]);
+                    b = Convert.ToDouble(dataRowTreat["damagePrice"]);
                 }
+
+                InsertToResultTable(dr["Effect"].ToString(),threat, ProtectMeasureData(),
+                        ProtectMeasureData(), dr["Name"].ToString(), a, b, 0);
             }
         }
 
